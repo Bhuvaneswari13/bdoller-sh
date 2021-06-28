@@ -1,45 +1,19 @@
 import React from "react";
-import history from "./utils/history";
-import BDO from "./BDO.png"
-//import Moment from 'react-moment';
+
 import 'moment-timezone';
 
 import {useState,useEffect} from 'react';
 import web3 from './web3';
-import lottery from './storeabicon';//this line import lottery folder
 
-import { Router, Route, Switch } from "react-router-dom";
-import Popup from 'reactjs-popup';
-
-import Treasury from './Treasury';
-import Firstpage from "./Firstpage";
-import Thirdpage from "./Thirdpage";
-import Fourthpage from "./Fourthpage";
-import Fifthpage from "./Fifthpage";
 import bdooracle from "./bdooracle";
 import boardroom from "./Boardroom";
-import Homepage from "./Moa";
-import bdo from "./bdo";
+
 import share from "./share";
 import { Modal, Button,InputGroup,FormControl } from "react-bootstrap";
 
 function MyVerticallyCenteredModal1(props) {
-  var [deposited,setdeposited] = useState("");
-  const [geta,setgeta] = useState("");
-  var [rate,setrate] = useState("");
-  var [twap,settwap] = useState("");
-  var [deposited,setdeposited] = useState("");
-  var [locked,setlock] = useState("");
-  var [app,setapprove] = useState("");
+  
   var [deposite,setdeposite] = useState("");
-  var [amount,setamount]= useState("");
-  const [tid,setId] = useState("");
-  const [tid1,setId1] = useState("");
-  const [Seigniorage,setSeigniorage] = useState("");
-  var [withdraw,setwithdraw] = useState("");
-  var [bal,setbal] = useState("");
-  var [claim,setclaim] = useState("");
-  var[ear,setear] = useState("");
   
 
   const Deposited = async (event) =>{
@@ -129,7 +103,7 @@ function MyVerticallyCenteredModal2(props) {
     <Modal
       {...props}
       style={{width:"500px" , marginLeft:"400px"}}
-
+ 
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       id="mymodal1"
@@ -171,7 +145,7 @@ function Secondpage() {
   var [nextseigniorage,setnextseigniorage] = useState("");
 
   
-  const [geta,setgeta] = useState("");
+  
   var [rate,setrate] = useState("");
   var [twap,settwap] = useState("");
   var [twap1,settwap1] = useState("");
@@ -254,14 +228,6 @@ function Secondpage() {
     
 
       const accounts = await  web3.eth.getAccounts();
-      //settwap(await bdooracle.methods.twap("0x8352A0a849cD181Cc7Ef61F972b7B8E5d677b66D","1000000000000000000").call());   
-      //setrate(await Treasury.events.maxSupplyExpansionPercent);
-      //setepoch(await bdooracle.methods.getCurrentEpoch().call());
-
-      //setdeposited(await boardroom.methods.totalSupply().call());
-    //setnextseigniorage(await Treasury.methods.nextEpochPoint().call()); 
-    //setlock(await bdo.methods.balanceOf("0xF277De5B326C3538c81e73cE9a6f7232eAEE4439").call()); 
-    //setbal(await boardroom.methods.balanceOf(accounts[0]).call());  
     setear(await boardroom.methods.pendingBlack(accounts[0]).call()); 
       
   };
@@ -272,7 +238,7 @@ function Secondpage() {
 <center>
 <br></br>
 <h2 class="dark1"><b>Deposite your Seigniorage Share</b>
-</h2>
+</h2> 
 
   <br></br>
 
