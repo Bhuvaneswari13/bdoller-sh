@@ -1,7 +1,7 @@
 import React from "react";
 //import history from "./utils/history";
-import download from "./download.png";
-import BDO from "./BDO.png";
+//import download from "./download.png";
+//import BDO from "./BDO.png";
 
 
 import { Link } from "react-router-dom";
@@ -40,11 +40,11 @@ function Thirdpage() {
 </form><br />
 <div class="row ml-5">
 <div class="col-1 ml-5">
-<img src={BDO} width="60px" height="60px" margin-right="-20px"/>
+{/*<img src={BDO} width="60px" height="60px" margin-right="-20px"/>*/}
 
 </div>
 <div class="col-1 ml-n5">
-<img src={download} width="60px" height="60px"/>
+{/*<img src={download} width="60px" height="60px"/>*/}
 
   </div>
 
