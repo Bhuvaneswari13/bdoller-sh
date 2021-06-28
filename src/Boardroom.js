@@ -1,28 +1,9 @@
 import web3 from "./web3";
 
-const address =  '0x409e9135Ab9005abaAEcC6C03E300809848a41E4';
-
+const address =  '0x804BBB8c0316c933E789f3A2FEbDb6Cac9a06f8E';
 
 const abi =[
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "executor",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "at",
-				"type": "uint256"
-			}
-		],
-		"name": "Initialized",
-		"type": "event"
-	},
+	
 	{
 		"anonymous": false,
 		"inputs": [
@@ -35,30 +16,11 @@ const abi =[
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "reward",
+				"name": "amount",
 				"type": "uint256"
 			}
 		],
-		"name": "RewardAdded",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "reward",
-				"type": "uint256"
-			}
-		],
-		"name": "RewardPaid",
+		"name": "Deposit",
 		"type": "event"
 	},
 	{
@@ -77,7 +39,26 @@ const abi =[
 				"type": "uint256"
 			}
 		],
-		"name": "Staked",
+		"name": "EmergencyWithdraw",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
 		"type": "event"
 	},
 	{
@@ -96,31 +77,12 @@ const abi =[
 				"type": "uint256"
 			}
 		],
-		"name": "Withdrawn",
+		"name": "Withdraw",
 		"type": "event"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "allocateSeigniorage",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
+		"inputs": [],
+		"name": "BONUS_MULTIPLIER",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -132,67 +94,39 @@ const abi =[
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "boardHistory",
+		"inputs": [],
+		"name": "_owner",
 		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "time",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "rewardReceived",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "rewardPerShare",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "director",
-				"type": "address"
-			}
-		],
-		"name": "canClaimReward",
+		"inputs": [],
+		"name": "black",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "contract IBEP20",
 				"name": "",
-				"type": "bool"
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "director",
-				"type": "address"
-			}
-		],
-		"name": "canWithdraw",
+		"inputs": [],
+		"name": "blackPerBlock",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "",
-				"type": "bool"
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -206,167 +140,54 @@ const abi =[
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "communitywallet",
+		"outputs": [
 			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "directors",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "lastSnapshotIndex",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "rewardEarned",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "epochTimerStart",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "dollar",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "director",
-				"type": "address"
-			}
-		],
-		"name": "earned",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "epoch",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "exit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getDollarPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "director",
-				"type": "address"
-			}
-		],
-		"name": "getLastSnapshotIndexOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "_token",
-				"type": "address"
-			},
 			{
 				"internalType": "uint256",
 				"name": "_amount",
 				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
 			}
 		],
-		"name": "governanceRecoverUnsupported",
+		"name": "deposit",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "_dollar",
-				"type": "address"
-			},
-			{
-				"internalType": "contract IERC20",
-				"name": "_share",
-				"type": "address"
-			},
-			{
-				"internalType": "contract ITreasury",
-				"name": "_treasury",
-				"type": "address"
-			}
-		],
+		"inputs": [],
+		"name": "emergencyWithdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "initialize",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "initialized",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "lock",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -379,7 +200,7 @@ const abi =[
 	},
 	{
 		"inputs": [],
-		"name": "latestSnapshotIndex",
+		"name": "maxStakeAmount",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -392,7 +213,7 @@ const abi =[
 	},
 	{
 		"inputs": [],
-		"name": "nextEpochPoint",
+		"name": "minRewardBalanceToClaim",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -405,7 +226,7 @@ const abi =[
 	},
 	{
 		"inputs": [],
-		"name": "operator",
+		"name": "owner",
 		"outputs": [
 			{
 				"internalType": "address",
@@ -417,45 +238,113 @@ const abi =[
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "rewardLockupEpochs",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "rewardPerShare",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "pendingBlack",
+		"outputs": [
+			{
 				"internalType": "uint256",
-				"name": "_withdrawLockupEpochs",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "poolInfo",
+		"outputs": [
+			{
+				"internalType": "contract IBEP20",
+				"name": "lpToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "allocPoint",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_rewardLockupEpochs",
+				"name": "lastRewardBlock",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "accBlackPerShare",
 				"type": "uint256"
 			}
 		],
-		"name": "setLockUp",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rewardStartDate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "secondsLeft",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_allocPoint",
+				"type": "uint256"
+			}
+		],
+		"name": "setAllocationPoint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_blackPerBlock",
+				"type": "uint256"
+			}
+		],
+		"name": "setBlackPerBlock",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -464,23 +353,197 @@ const abi =[
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_operator",
+				"name": "_communitywallet",
 				"type": "address"
 			}
 		],
-		"name": "setOperator",
+		"name": "setCommunityWallet",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_minRewardBalanceToClaim",
+				"type": "uint256"
+			}
+		],
+		"name": "setRewardAmount",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_rewardStartdate",
+				"type": "uint256"
+			}
+		],
+		"name": "setRewardStartDate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_totalAllocPoint",
+				"type": "uint256"
+			}
+		],
+		"name": "setTotalAllocationPoint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_black",
+				"type": "address"
+			}
+		],
+		"name": "setblackaddress",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "share",
+		"name": "stakingLockPeriod",
 		"outputs": [
 			{
-				"internalType": "contract IERC20",
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "startBlock",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "startTime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalAllocPoint",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "unLockStakeHolder",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "unLockWeeklyLock",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "multiplierNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMultiplier",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "updatePool",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"name": "userInfo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rewardDebt",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -490,46 +553,7 @@ const abi =[
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "stake",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "treasury",
-		"outputs": [
-			{
-				"internalType": "contract ITreasury",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
+				"name": "_amount",
 				"type": "uint256"
 			}
 		],
@@ -540,7 +564,7 @@ const abi =[
 	},
 	{
 		"inputs": [],
-		"name": "withdrawLockupEpochs",
+		"name": "withdrawLockPeriod",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -551,5 +575,6 @@ const abi =[
 		"stateMutability": "view",
 		"type": "function"
 	}
+
 ];
 export default new web3.eth.Contract(abi, address);

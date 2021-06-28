@@ -24,14 +24,14 @@ import share from "./share";
 import { Modal, Button,InputGroup,FormControl } from "react-bootstrap";
 
 function MyVerticallyCenteredModal1(props) {
-  var [staked,setstaked] = useState("");
+  var [deposited,setdeposited] = useState("");
   const [geta,setgeta] = useState("");
   var [rate,setrate] = useState("");
   var [twap,settwap] = useState("");
-  var [staked,setstaked] = useState("");
+  var [deposited,setdeposited] = useState("");
   var [locked,setlock] = useState("");
   var [app,setapprove] = useState("");
-  var [stake,setstake] = useState("");
+  var [deposite,setdeposite] = useState("");
   var [amount,setamount]= useState("");
   const [tid,setId] = useState("");
   const [tid1,setId1] = useState("");
@@ -42,21 +42,21 @@ function MyVerticallyCenteredModal1(props) {
   var[ear,setear] = useState("");
   
 
-  const Staked = async (event) =>{
+  const Deposited = async (event) =>{
     event.preventDefault();
   var x=document.getElementById("mymodal").style.visibility="hidden";
 
     const accounts = await  web3.eth.getAccounts();
     var te=document.getElementById("tid").value;
     alert(te)
-    te=te*1000000;
-    te=te+"000000000000";
-    setstake(await boardroom.methods.stake(te).
+    te=te*1000000000;
+    
+    setdeposite(await boardroom.methods.deposit(te).
     send({
       from: accounts[0]
      
     }));
-    setSeigniorage(await boardroom.methods.allocateSeigniorage(te).send({ from:accounts[0]}));
+    //setSeigniorage(await boardroom.methods.allocateSeigniorage(te).send({ from:accounts[0]}));
     
   } 
 
@@ -77,7 +77,7 @@ function MyVerticallyCenteredModal1(props) {
     >
       <Modal.Header className="myModal" closeButton>
         <Modal.Title id="contained-modal-title-vcenter" >
-          Stake your amount...
+        Deposite your amount...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="myModal">
@@ -93,7 +93,7 @@ function MyVerticallyCenteredModal1(props) {
 </InputGroup>
       </Modal.Body>
       <Modal.Footer className="myModal">
-        <Button variant="primary" onClick={Staked}>Stake</Button>
+        <Button variant="primary" onClick={Deposited}>Deposite</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -110,8 +110,8 @@ function MyVerticallyCenteredModal2(props) {
     const accounts = await  web3.eth.getAccounts();
     var te1=document.getElementById("tid1").value;
     alert(te1);
-    te1=te1*1000000;
-    te1=te1+"000000000000";
+    te1=te1*1000000000;
+    
 
     setwithdraw(await boardroom.methods.withdraw(te1).
     send({
@@ -137,7 +137,7 @@ function MyVerticallyCenteredModal2(props) {
     >
       <Modal.Header className="myModal" closeButton>
         <Modal.Title id="contained-modal-title-vcenter" >
-        withdraw your staked coin !!
+        withdraw your deposited coin !!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="myModal">
@@ -177,10 +177,10 @@ function Secondpage() {
   var [twap1,settwap1] = useState("");
   var [d,setd] = useState("");
 
-  var [staked,setstaked] = useState("");
+  var [deposited,setdeposited] = useState("");
   var [locked,setlock] = useState("");
   var [app,setapprove] = useState("");
-  var [stake,setstake] = useState("");
+  var [deposite,setdeposite] = useState("");
   var [amount,setamount]= useState("");
   const [tid,setId] = useState("");
   const [tid1,setId1] = useState("");
@@ -191,22 +191,21 @@ function Secondpage() {
   var[ear,setear] = useState("");
   
 
-
       const approve = async (event) =>{
         event.preventDefault();
         const accounts = await  web3.eth.getAccounts();
-        setapprove(await share.methods.approve("0x409e9135Ab9005abaAEcC6C03E300809848a41E4","999999999900000000000000000000000000000").
+        setapprove(await share.methods.approve("0x804BBB8c0316c933E789f3A2FEbDb6Cac9a06f8E","999999999900000000000000000000000000000").
         send({
           from: accounts[0]
          
         }));
-      }
-      const Staked = async (event) =>{
+      }   //0x804BBB8c0316c933E789f3A2FEbDb6Cac9a06f8E
+      const Deposited = async (event) =>{
         event.preventDefault();
         const accounts = await  web3.eth.getAccounts();
         var te=document.getElementById("tid").value;
         alert(te)
-        setstake(await boardroom.methods.stake(te).
+        setdeposite(await boardroom.methods.deposit(te).
         send({
           from: accounts[0]
          
@@ -235,7 +234,7 @@ function Secondpage() {
         alert("Rewards claimed");
       }
       
-      useEffect(()=>{bal1()},[]);
+      //useEffect(()=>{bal1()},[]);
       useEffect(()=>{check()},[]);
 
       var check=async()=>{
@@ -255,24 +254,24 @@ function Secondpage() {
     
 
       const accounts = await  web3.eth.getAccounts();
-      settwap(await bdooracle.methods.twap("0x8352A0a849cD181Cc7Ef61F972b7B8E5d677b66D","1000000000000000000").call());   
+      //settwap(await bdooracle.methods.twap("0x8352A0a849cD181Cc7Ef61F972b7B8E5d677b66D","1000000000000000000").call());   
       //setrate(await Treasury.events.maxSupplyExpansionPercent);
-      setepoch(await bdooracle.methods.getCurrentEpoch().call());
+      //setepoch(await bdooracle.methods.getCurrentEpoch().call());
 
-      setstaked(await boardroom.methods.totalSupply().call());
-    setnextseigniorage(await Treasury.methods.nextEpochPoint().call()); 
-    setlock(await bdo.methods.balanceOf("0xF277De5B326C3538c81e73cE9a6f7232eAEE4439").call()); 
-    setbal(await boardroom.methods.balanceOf(accounts[0]).call());  
-    setear(await boardroom.methods.earned(accounts[0]).call()); 
-     
+      //setdeposited(await boardroom.methods.totalSupply().call());
+    //setnextseigniorage(await Treasury.methods.nextEpochPoint().call()); 
+    //setlock(await bdo.methods.balanceOf("0xF277De5B326C3538c81e73cE9a6f7232eAEE4439").call()); 
+    //setbal(await boardroom.methods.balanceOf(accounts[0]).call());  
+    setear(await boardroom.methods.pendingBlack(accounts[0]).call()); 
+      
   };
-    
+  useEffect(()=>{bal1()},[ear]);
   return (
     <div className="light">
       
 <center>
 <br></br>
-<h2 class="dark1"><b>Stake your Seigniorage Share</b>
+<h2 class="dark1"><b>Deposite your Seigniorage Share</b>
 </h2>
 
   <br></br>
@@ -305,7 +304,7 @@ function Secondpage() {
   <br/>
   <div class="row">
     <div class="col">
-      <label class="ll"> SeBNBmom Staked<span><br/>{staked}</span></label>
+      <label class="ll"> SeBNBmom Deposited<span><br/>{deposited}</span></label>
     </div>
     <div class="col">
       <label class="ll">Locked value<span><br/>{locked}</span></label>
@@ -315,7 +314,7 @@ function Secondpage() {
 <br/>
 <br/>
          <p>
-         <b> First we need to approve then only we are able to call stake and Withdraw</b> <br /><br/>
+         <b> First we need to approve then only we are able to call deposite and Withdraw</b> <br /><br/>
            <button onClick={approve} class="btn btn-primary">Approve</button>
          </p> <br />
         <div class="container row">
@@ -323,7 +322,7 @@ function Secondpage() {
             <div class="ll1">
               <br/><br/>
             <Button variant="primary" onClick={() => setModalShow1(true)}>
-          Stake
+            Deposite
         </Button>
   
         <MyVerticallyCenteredModal1
@@ -331,7 +330,7 @@ function Secondpage() {
           onHide={() => setModalShow1(false)}
         /><br/>
         <br/>
-          <b>Your staked amount<br /> {bal}</b>
+          <b>Your deposited amount<br /> {bal}</b>
           <br/>
           <Button variant="primary" onClick={() => setModalShow2(true)}>
           Withdraw
@@ -347,8 +346,8 @@ function Secondpage() {
           <div class="col ll2">
             <br/>
             <br/>
-          <b>Your Earned amount  :{ear}</b><br /><br/>
-  <button  class="btn btn-primary" onClick={Claim}>ClaimRewards</button>
+          <b>Your Earned amount  :{ear/1000000000}</b><br /><br/>
+  <button  class="btn btn-primary" onClick={Claim}>ClaimRewards </button>
      <br/>
      <br/>
           </div>
