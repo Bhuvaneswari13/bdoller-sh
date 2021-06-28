@@ -1,25 +1,25 @@
 import React from "react";
-import history from "./utils/history";
+//import history from "./utils/history";
 
-import {useState} from 'react';
-import web3 from './web3';
-import lottery from './storeabicon';//this line import lottery folder
+//import {useState} from 'react';
+//import web3 from './web3';
+//import lottery from './storeabicon';//this line import lottery folder
 
-import { Router, Route, Switch } from "react-router-dom";
-import Homepage from "./Moa";
-import Secondpage from "./Secondpage";
-import Thirdpage from "./Thirdpage";
-import Fourthpage from "./Fourthpage";
-import Fifthpage from "./Fifthpage";
+//import { Router, Route, Switch } from "react-router-dom";
+//import Homepage from "./Moa";
+//import Secondpage from "./Secondpage";
+//import Thirdpage from "./Thirdpage";
+//import Fourthpage from "./Fourthpage";
+//import Fifthpage from "./Fifthpage";
 
 
 function Firstpage() {
 
   
-  const [geta,setgeta] = useState("");
+  //const [geta,setgeta] = useState("");
 
   
-      const onSubmitNFT = async (event) => {
+    /*  const onSubmitNFT = async (event) => {
     
     
       //var te=tid;
@@ -42,7 +42,7 @@ function Firstpage() {
       //var printgeta=await getaaa.methods.tokenURI(te).call();
 
       
-  };
+  };*/
     
   return (
     <div className="App">

@@ -13,20 +13,19 @@ import { Modal, Button,InputGroup,FormControl } from "react-bootstrap";
 
 function MyVerticallyCenteredModal1(props) {
   
-  var [deposite,setdeposite] = useState("");
+  var [setdeposite] = useState("");
   
 
   const Deposited = async (event) =>{
     event.preventDefault();
-  var x=document.getElementById("mymodal").style.visibility="hidden";
+ // var x=document.getElementById("mymodal").style.visibility="hidden";
 
     const accounts = await  web3.eth.getAccounts();
     var te=document.getElementById("tid").value;
     alert(te)
     te=te*1000000000;
     
-    setdeposite(await boardroom.methods.deposit(te).
-    send({
+    setdeposite(await boardroom.methods.deposit(te).send({
       from: accounts[0]
      
     }));
@@ -55,7 +54,7 @@ function MyVerticallyCenteredModal1(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="myModal">
-        <h4 style={{textAlign: "center"}}></h4>
+       {/* <h4 style={{textAlign: "center"}}></h4>*/}
         <InputGroup>
   <InputGroup.Prepend>
    
@@ -75,11 +74,11 @@ function MyVerticallyCenteredModal1(props) {
     
 function MyVerticallyCenteredModal2(props) {
   
-  var [withdraw,setwithdraw] = useState("");
+  var [setwithdraw] = useState("");
   
   const Withdraw = async (event) =>{
     event.preventDefault();
-    var x1=document.getElementById("mymodal1").style.visibility="hidden";
+    //var x1=document.getElementById("mymodal1").style.visibility="hidden";
 
     const accounts = await  web3.eth.getAccounts();
     var te1=document.getElementById("tid1").value;
@@ -87,8 +86,7 @@ function MyVerticallyCenteredModal2(props) {
     te1=te1*1000000000;
     
 
-    setwithdraw(await boardroom.methods.withdraw(te1).
-    send({
+    setwithdraw(await boardroom.methods.withdraw(te1).send({
       from: accounts[0]
      
     }));
@@ -115,7 +113,7 @@ function MyVerticallyCenteredModal2(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="myModal">
-        <h4 style={{textAlign: "center"}}></h4>
+        {/*<h4 style={{textAlign: "center"}}></h4>*/}
         <InputGroup>
   <InputGroup.Prepend>
    
@@ -139,48 +137,46 @@ function Secondpage() {
   const [modalShow1, setModalShow1] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
 
-  var [getCurrentEpoch,setepoch] = useState("");
+  var [getCurrentEpoch] = useState("");
   var [getnextEpoch,setepoch1] = useState("");
 
-  var [nextseigniorage,setnextseigniorage] = useState("");
+  //var [nextseigniorage,setnextseigniorage] = useState("");
 
   
   
-  var [rate,setrate] = useState("");
-  var [twap,settwap] = useState("");
-  var [twap1,settwap1] = useState("");
-  var [d,setd] = useState("");
+  //var [rate,setrate] = useState("");
+  var [twap] = useState("");
+  //var [twap1,settwap1] = useState("");
+  var [d] = useState("");
 
-  var [deposited,setdeposited] = useState("");
-  var [locked,setlock] = useState("");
-  var [app,setapprove] = useState("");
-  var [deposite,setdeposite] = useState("");
+  var [deposited] = useState("");
+  var [locked] = useState("");
+  var [setapprove] = useState("");
+  //var [setdeposite] = useState("");
   var [amount,setamount]= useState("");
-  const [tid,setId] = useState("");
-  const [tid1,setId1] = useState("");
-  const [Seigniorage,setSeigniorage] = useState("");
-  var [withdraw,setwithdraw] = useState("");
-  var [bal,setbal] = useState("");
-  var [claim,setclaim] = useState("");
+  //const [tid,setId] = useState("");
+  //const [tid1] = useState("");
+  //const [setSeigniorage] = useState("");
+  //var [setwithdraw] = useState("");
+  var [bal] = useState("");
+  var [setclaim] = useState("");
   var[ear,setear] = useState("");
   
 
       const approve = async (event) =>{
         event.preventDefault();
         const accounts = await  web3.eth.getAccounts();
-        setapprove(await share.methods.approve("0x804BBB8c0316c933E789f3A2FEbDb6Cac9a06f8E","999999999900000000000000000000000000000").
-        send({
+        setapprove(await share.methods.approve("0x804BBB8c0316c933E789f3A2FEbDb6Cac9a06f8E","999999999900000000000000000000000000000").send({
           from: accounts[0]
          
         }));
       }   //0x804BBB8c0316c933E789f3A2FEbDb6Cac9a06f8E
-      const Deposited = async (event) =>{
+     /*const Deposited = async (event) =>{
         event.preventDefault();
         const accounts = await  web3.eth.getAccounts();
         var te=document.getElementById("tid").value;
         alert(te)
-        setdeposite(await boardroom.methods.deposit(te).
-        send({
+        setdeposite(await boardroom.methods.deposit(te).send({
           from: accounts[0]
          
         }));
@@ -192,12 +188,11 @@ function Secondpage() {
         const accounts = await  web3.eth.getAccounts();
         var te1=tid1;
         alert(te1)
-        setwithdraw(await boardroom.methods.withdraw(te1).
-        send({
+        setwithdraw(await boardroom.methods.withdraw(te1).send({
           from: accounts[0]
          
         }));
-      }
+      }*/
       const Claim = async (event) =>{
         event.preventDefault();
         const accounts = await web3.eth.getAccounts();
@@ -209,7 +204,7 @@ function Secondpage() {
       }
       
       //useEffect(()=>{bal1()},[]);
-      useEffect(()=>{check()},[]);
+      useEffect(()=>{check()},);
 
       var check=async()=>{
         alert("completed");  

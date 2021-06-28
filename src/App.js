@@ -1,11 +1,11 @@
-import logo from './s.svg';
+//import logo from './s.svg';
 import './App.css';
 import web3 from './web3';
 import React, { useEffect } from "react";
-import {BrowserRouter as Router , Route , Link , Switch , NavLink} from "react-router-dom";
-import history from "./utils/history";
-import { Button } from 'react-bootstrap';
-import { Navbar ,Nav,Form} from 'react-bootstrap';
+import {BrowserRouter as Router , Route , Link , Switch } from "react-router-dom";
+//import history from "./utils/history";
+//import { Button } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import {useState} from 'react';
 
 

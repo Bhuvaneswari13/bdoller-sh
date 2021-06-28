@@ -1,37 +1,37 @@
 import React from "react";
-import history from "./utils/history";
-import BDO from "./BDO.png"
+//import history from "./utils/history";
+//import BDO from "./BDO.png"
 import {useState,useEffect} from 'react';
 //import { Link } from 'react-router'
 import web3 from './web3';
 import './App.css';
 import lottery from './bdo';
-import bdooracle from './bdooracle.js'; 
-import { Router, Route, Switch,Link } from "react-router-dom";
-import Firstpage from "./Firstpage";
-import Secondpage from "./Secondpage";
-import Thirdpage from "./Thirdpage";
-import Fourthpage from "./Fourthpage";
-import Fifthpage from "./Fifthpage";
+//import bdooracle from './bdooracle.js'; 
+import { Link } from "react-router-dom";
+//import Firstpage from "./Firstpage";
+//import Secondpage from "./Secondpage";
+//import Thirdpage from "./Thirdpage";
+//import Fourthpage from "./Fourthpage";
+//import Fifthpage from "./Fifthpage";
 
 import Treasury from './Treasury';
 import { Card } from "react-bootstrap";
-import bdo from "./bdo";
+//import bdo from "./bdo";
 import share from "./share";
 
 function Moa(){
   
   const [balance,setbalance] = useState("");
-  const [balance1,setbalance1] = useState("");
+  //const [balance1,setbalance1] = useState("");
 
   const [totalsupply,settotalsupply] = useState("");
   const [totalsupply1,settotalsupply1] = useState("");
   const [tokenname,settokenname] = useState("");
   const [tokensymbol,settokensymbol]= useState("");
   var [price,setprice] = useState("");
-  const [tokenname1,settokenname1] = useState("");
-  const [tokensymbol1,settokensymbol1]= useState("");
-  var [price1,setprice1] = useState("");
+  //const [tokenname1,settokenname1] = useState("");
+  //const [tokensymbol1,settokensymbol1]= useState("");
+  //var [price1,setprice1] = useState("");
 
   
   useEffect(()=>{bal()},[])

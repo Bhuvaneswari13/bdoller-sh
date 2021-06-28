@@ -1,31 +1,20 @@
 import React from "react";
-import history from "./utils/history";
-import BDO from "./BDO.png"
 import { Modal, Button,InputGroup,FormControl } from "react-bootstrap";
 
 import {useState,useEffect} from 'react';
 import web3 from './web3';
-import lottery from './storeabicon';//this line import lottery folder
-
-import { Router, Route, Switch } from "react-router-dom";
-import Homepage from "./Moa";
-import Secondpage from "./Secondpage";
-import Thirdpage from "./Thirdpage";
-
-import Firstpage from "./Firstpage";
-import Fifthpage from "./Fifthpage";
 import share from "./sharerewardpool";
 import lp from "./pancakeLP";
 
 
 function MyVerticallyCenteredModal1(props) {
-  const [geta,setgeta] = useState("");
-  var[sid,setsId] = useState("");
-  var[bal,setbal] = useState("");
-  var [app,setapprove] = useState("");
-  var [tid1,setId1] = useState("");
-  var[withd,setwithdraw] = useState("");
-  var [withd1,setwithdraw1] = useState("");
+//  const [geta,setgeta] = useState("");
+  var[setsId] = useState("");
+  //var[bal,setbal] = useState("");
+  //var [app,setapprove] = useState("");
+  //var [tid1,setId1] = useState("");
+  //var[withd,setwithdraw] = useState("");
+  //var [withd1,setwithdraw1] = useState("");
 
 
   
@@ -33,7 +22,7 @@ function MyVerticallyCenteredModal1(props) {
 
   const Staked = async (event) =>{
     event.preventDefault();
-    var x=document.getElementById("mymodal").style.visibility="hidden";
+    //var x=document.getElementById("mymodal").style.visibility="hidden";
 
     const accounts = await  web3.eth.getAccounts();
     var te=document.getElementById("tid").value;
@@ -42,8 +31,7 @@ function MyVerticallyCenteredModal1(props) {
       te=te+"000000000000";
       
   
-    setsId(await share.methods.deposit("0",te).
-    send({
+    setsId(await share.methods.deposit("0",te).send({
       from: accounts[0]
      
     }));
@@ -67,7 +55,7 @@ function MyVerticallyCenteredModal1(props) {
 Deposit LP token!!        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="myModal">
-        <h4 style={{textAlign: "center"}}></h4>
+        {/*<h4 style={{textAlign: "center"}}></h4>*/}
         <InputGroup>
   <InputGroup.Prepend>
    
@@ -87,16 +75,16 @@ Deposit LP token!!        </Modal.Title>
     
 function MyVerticallyCenteredModal2(props) {
   
-  const [geta,setgeta] = useState("");
-  var[sid,setsId] = useState("");
-  var[bal,setbal] = useState("");
-  var [app,setapprove] = useState("");
-  var [tid1,setId1] = useState("");
-  var[withd,setwithdraw] = useState("");
-  var [withd1,setwithdraw1] = useState("");
+  //const [geta,setgeta] = useState("");
+ // var[sid,setsId] = useState("");
+  //var[bal,setbal] = useState("");
+  //var [app,setapprove] = useState("");
+  //var [tid1,setId1] = useState("");
+  var[setwithdraw] = useState("");
+  //var [withd1,setwithdraw1] = useState("");
   
   const Withdraw = async (event) =>{
-    var x=document.getElementById("mymodal1").style.visibility="hidden";
+    //var x=document.getElementById("mymodal1").style.visibility="hidden";
 
     event.preventDefault();
     const accounts = await  web3.eth.getAccounts();
@@ -104,8 +92,7 @@ function MyVerticallyCenteredModal2(props) {
     alert(te1);
     te1=te1*1000000;
     te1=te1+"000000000000";
-    setwithdraw(await share.methods.withdraw("0",te1).
-    send({
+    setwithdraw(await share.methods.withdraw("0",te1).send({
       from: accounts[0]
      
     }));
@@ -131,7 +118,7 @@ function MyVerticallyCenteredModal2(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="myModal">
-        <h4 style={{textAlign: "center"}}></h4>
+       {/*<h4 style= {{textAlign: "center"}}></h4>*/}
         <InputGroup>
   <InputGroup.Prepend>
    
@@ -156,13 +143,13 @@ function Fourthpage() {
   const [modalShow2, setModalShow2] = React.useState(false);
 
   
-  const [geta,setgeta] = useState("");
-  var[sid,setsId] = useState("");
+  //const [geta,setgeta] = useState("");
+  //var[sid,setsId] = useState("");
   var[bal,setbal] = useState("");
-  var [app,setapprove] = useState("");
-  var [tid1,setId1] = useState("");
-  var[withd,setwithdraw] = useState("");
-  var [withd1,setwithdraw1] = useState("");
+  var [setapprove] = useState("");
+  //var [tid1] = useState("");
+  //var[setwithdraw] = useState("");
+  var [setwithdraw1] = useState("");
 
   
   useEffect(()=>{bal1()},[])
@@ -173,35 +160,32 @@ function Fourthpage() {
      alert("completed");    
    
   };
-  const Staked = async (event) =>{
+  /*const Staked = async (event) =>{
     event.preventDefault();
     const accounts = await  web3.eth.getAccounts();
     var te=sid;
     alert(te)
     
-    setsId(await share.methods.deposit("0",te).
-    send({
+    setsId(await share.methods.deposit("0",te).send({
       from: accounts[0]
      
     }));
-  }
-  const Withdraw = async (event) =>{
+  }*/
+  /*const Withdraw = async (event) =>{
     event.preventDefault();
     const accounts = await  web3.eth.getAccounts();
     var te1=tid1;
     alert(te1)
-    setwithdraw(await share.methods.withdraw("0",te1).
-    send({
+    setwithdraw(await share.methods.withdraw("0",te1).send({
       from: accounts[0]
      
     }));
-  }
+  }*/
   const settle = async (event) =>{
     event.preventDefault();
     const accounts = await  web3.eth.getAccounts();
 
-    setwithdraw1(await share.methods.emergencyWithdraw("0").
-    send({
+    setwithdraw1(await share.methods.emergencyWithdraw("0").send({
       from: accounts[0]
      
     }));
@@ -209,8 +193,7 @@ function Fourthpage() {
 const accept = async (event) =>{
       event.preventDefault();
       const accounts = await  web3.eth.getAccounts();
-      setapprove(await lp.methods.approve("0xEB50a80F7DE37AF8669b0C4973B2A33E8502c5a7","999999999900000000000000000000000000000").
-      send({
+      setapprove(await lp.methods.approve("0xEB50a80F7DE37AF8669b0C4973B2A33E8502c5a7","999999999900000000000000000000000000000").send({
         from: accounts[0]
        
       }));
